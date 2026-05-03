@@ -74,7 +74,7 @@ export const MenuPage = () => {
     <div className="menu-container">
       
       <div className="menu-header">
-        <h2 className="menu-title">Menu</h2>
+        <h2 className="menu-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem' }}>Our Regular Food</h2>
         <p className="menu-subtitle">Real-time Food API</p>
       </div>
 
@@ -124,29 +124,47 @@ export const MenuPage = () => {
         </div>
       )}
 
+      {/* Active Category Title */}
+      {!isLoading && !error && (
+        <div className="menu-section-header" style={{ marginBottom: '32px' }}>
+          <h2 className="menu-title" style={{ fontFamily: "'Noto Serif', serif", fontSize: '28px', color: 'var(--text-primary)' }}>
+            {activeCategory}
+          </h2>
+        </div>
+      )}
+
       {/* Menu Grid */}
       {!isLoading && !error && (
         <div className="menu-grid">
           {filteredMenu.map((item) => (
-            <div key={item.id} className="menu-item-card">
+            <article key={item.id} className="menu-item-card">
+              <div className="menu-item-image-wrapper">
+                <img src={item.image} alt={item.name} className="menu-item-image" />
+              </div>
+              
               <div className="menu-item-content">
-                <h3 className="menu-item-name">{item.name}</h3>
-                <p className="menu-item-description">
-                  {item.description}
-                </p>
+                <div className="menu-item-text-group">
+                  <h3 className="menu-item-name">{item.name}</h3>
+                  <p className="menu-item-description">
+                    {item.description}
+                  </p>
+                </div>
                 <span className="menu-item-price">${item.price.toFixed(2)}</span>
               </div>
               
-              <div className="menu-item-action-wrapper">
-                <img src={item.image} alt={item.name} className="menu-item-image" />
+              <div className="menu-item-footer">
+                <div className="menu-item-tags">
+                  {/* Dynamic tags could go here. Placeholder for aesthetic. */}
+                  {item.price > 10 && <span className="menu-item-tag">Chef's Pick</span>}
+                </div>
                 <button 
                   className="menu-add-to-cart-btn"
                   onClick={() => addToCart(item)}
                 >
-                  <Plus size={16} />
+                  Add <Plus size={16} />
                 </button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       )}

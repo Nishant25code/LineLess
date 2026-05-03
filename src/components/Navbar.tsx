@@ -9,11 +9,7 @@ export const Navbar = () => {
   const location = useLocation();
   const { cartItemCount } = useCart();
 
-  // Don't show the navbar on the initial welcome screen for a cleaner entry
-  if (location.pathname === '/') {
-    return null;
-  }
-
+  // Navbar is now visible on all pages including the home page
   return (
     <nav className="navbar">
       <div className="navbar-container">

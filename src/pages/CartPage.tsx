@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trash2, Minus, Plus, CreditCard, Apple, Smartphone } from 'lucide-react';
+import { Trash2, Minus, Plus, CreditCard, Apple, Smartphone, ShoppingBag } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../CartContext';
 import './CartPage.css';
@@ -24,7 +24,9 @@ export const CartPage = () => {
         <div className="cart-wrapper-empty">
 
           <div className="cart-empty-state">
-            <div className="cart-empty-icon">🛒</div>
+            <div className="cart-empty-icon" style={{ color: 'var(--text-secondary)' }}>
+              <ShoppingBag size={64} strokeWidth={1} />
+            </div>
             <h2 className="cart-empty-title">Your cart is empty</h2>
             <p className="cart-empty-subtitle">Looks like you haven't added anything yet.</p>
             <button className="cart-action-btn" onClick={() => navigate('/menu')}>Browse Menu</button>
