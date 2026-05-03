@@ -20,14 +20,14 @@ export const CartPage = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="container flex-col flex-center">
-        <div className="mobile-wrapper" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div className="cart-container-empty">
+        <div className="cart-wrapper-empty">
 
-          <div className="text-center mt-8">
-            <div className="empty-cart-icon mb-6">🛒</div>
-            <h2 className="text-h2 mb-2">Your cart is empty</h2>
-            <p className="text-body mb-8">Looks like you haven't added anything yet.</p>
-            <button className="btn-primary" onClick={() => navigate('/menu')}>Browse Menu</button>
+          <div className="cart-empty-state">
+            <div className="cart-empty-icon">🛒</div>
+            <h2 className="cart-empty-title">Your cart is empty</h2>
+            <p className="cart-empty-subtitle">Looks like you haven't added anything yet.</p>
+            <button className="cart-action-btn" onClick={() => navigate('/menu')}>Browse Menu</button>
           </div>
         </div>
       </div>
@@ -35,29 +35,29 @@ export const CartPage = () => {
   }
 
   return (
-    <div className="container">
-      <div className="mobile-wrapper" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+    <div className="cart-container">
+      <div className="cart-wrapper">
         
-        <div className="mb-6">
-          <h2 className="text-h2">Checkout</h2>
+        <div className="cart-header">
+          <h2 className="cart-title">Checkout</h2>
         </div>
 
-        <div className="cart-items-list mb-6">
+        <div className="cart-items-list">
           {cart.map((item) => (
-            <div key={item.id} className="cart-item card mb-4">
+            <div key={item.id} className="cart-item">
               <img src={item.image} alt={item.name} className="cart-item-image" />
               
               <div className="cart-item-details">
-                <h3 className="text-body" style={{ fontWeight: 600 }}>{item.name}</h3>
-                <p className="text-accent mb-2" style={{ fontWeight: 700 }}>${item.price.toFixed(2)}</p>
+                <h3 className="cart-item-name">{item.name}</h3>
+                <p className="cart-item-price">${item.price.toFixed(2)}</p>
                 
-                <div className="quantity-controls">
-                  <button className="qty-btn" onClick={() => updateQuantity(item.id, -1)}>
-                    {item.quantity === 1 ? <Trash2 size={14} className="text-danger" /> : <Minus size={14} />}
+                <div className="cart-quantity-controls">
+                  <button className="cart-qty-btn" onClick={() => updateQuantity(item.id, -1)}>
+                    {item.quantity === 1 ? <Trash2 size={14} className="cart-qty-icon-danger" /> : <Minus size={14} className="cart-qty-icon" />}
                   </button>
-                  <span className="qty-value">{item.quantity}</span>
-                  <button className="qty-btn" onClick={() => updateQuantity(item.id, 1)}>
-                    <Plus size={14} />
+                  <span className="cart-qty-value">{item.quantity}</span>
+                  <button className="cart-qty-btn" onClick={() => updateQuantity(item.id, 1)}>
+                    <Plus size={14} className="cart-qty-icon" />
                   </button>
                 </div>
               </div>
@@ -65,23 +65,23 @@ export const CartPage = () => {
           ))}
         </div>
 
-        <div className="payment-methods mb-6">
-          <h3 className="text-body mb-3" style={{ fontWeight: 600 }}>Payment Method</h3>
-          <div className="payment-options">
+        <div className="cart-payment-methods">
+          <h3 className="cart-payment-title">Payment Method</h3>
+          <div className="cart-payment-options">
             <button 
-              className={`payment-option card ${selectedPayment === 'apple' ? 'active' : ''}`}
+              className={`cart-payment-option ${selectedPayment === 'apple' ? 'active' : ''}`}
               onClick={() => setSelectedPayment('apple')}
             >
               <Apple size={24} />
             </button>
             <button 
-              className={`payment-option card ${selectedPayment === 'card' ? 'active' : ''}`}
+              className={`cart-payment-option ${selectedPayment === 'card' ? 'active' : ''}`}
               onClick={() => setSelectedPayment('card')}
             >
               <CreditCard size={24} />
             </button>
             <button 
-              className={`payment-option card ${selectedPayment === 'upi' ? 'active' : ''}`}
+              className={`cart-payment-option ${selectedPayment === 'upi' ? 'active' : ''}`}
               onClick={() => setSelectedPayment('upi')}
             >
               <Smartphone size={24} />
@@ -89,21 +89,21 @@ export const CartPage = () => {
           </div>
         </div>
 
-        <div className="checkout-summary card mb-8">
-          <div className="summary-row mb-2">
-            <span className="text-secondary">Subtotal</span>
-            <span style={{ fontWeight: 500 }}>${subtotal.toFixed(2)}</span>
+        <div className="cart-checkout-summary">
+          <div className="cart-summary-row">
+            <span className="cart-summary-label">Subtotal</span>
+            <span className="cart-summary-value">${subtotal.toFixed(2)}</span>
           </div>
-          <div className="summary-row mb-4">
-            <span className="text-secondary">Tax (8%)</span>
-            <span style={{ fontWeight: 500 }}>${tax.toFixed(2)}</span>
+          <div className="cart-summary-row cart-summary-spacing">
+            <span className="cart-summary-label">Tax (8%)</span>
+            <span className="cart-summary-value">${tax.toFixed(2)}</span>
           </div>
-          <div className="summary-row total-row mb-6">
-            <span className="text-h2">Total</span>
-            <span className="text-h2 text-accent">${total.toFixed(2)}</span>
+          <div className="cart-summary-total-row">
+            <span className="cart-total-label">Total</span>
+            <span className="cart-total-value">${total.toFixed(2)}</span>
           </div>
           
-          <button className="btn-primary" onClick={handleCheckout}>
+          <button className="cart-action-btn" onClick={handleCheckout}>
             {selectedPayment === 'apple' ? 'Pay with Apple Pay' : 'Pay Now'}
           </button>
         </div>

@@ -71,32 +71,33 @@ export const MenuPage = () => {
   });
 
   return (
-    <div className="container" style={{ paddingBottom: '100px' }}>
+    <div className="menu-container">
       
-      <div className="mb-6">
-        <h2 className="text-h2">Menu</h2>
-        <p className="text-caption">Real-time Food API</p>
+      <div className="menu-header">
+        <h2 className="menu-title">Menu</h2>
+        <p className="menu-subtitle">Real-time Food API</p>
       </div>
 
       {/* Search & Filters */}
-      <div className="search-bar card mb-6">
-        <Search size={20} className="text-secondary" />
+      <div className="menu-search-bar">
+        <Search size={20} className="menu-search-icon" />
         <input 
           type="text" 
           placeholder="Search items..." 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          className="menu-search-input"
         />
-        <Filter size={20} className="text-secondary" />
+        <Filter size={20} className="menu-filter-icon" />
       </div>
 
       {/* Categories */}
       {!isLoading && !error && (
-        <div className="categories-scroll hide-scrollbar mb-6">
+        <div className="menu-categories-scroll">
           {categories.map(category => (
             <button 
               key={category}
-              className={`category-pill ${activeCategory === category ? 'active' : ''}`}
+              className={`menu-category-pill ${activeCategory === category ? 'active' : ''}`}
               onClick={() => setActiveCategory(category)}
             >
               {category}
@@ -107,17 +108,17 @@ export const MenuPage = () => {
 
       {/* Loading State */}
       {isLoading && (
-        <div className="flex-col flex-center" style={{ padding: '40px 0', color: 'var(--text-secondary)' }}>
-          <Loader2 size={32} className="animate-spin mb-4" />
+        <div className="menu-loading-state">
+          <Loader2 size={32} className="menu-loading-spinner" />
           <p>Fetching real-time menu...</p>
         </div>
       )}
 
       {/* Error State */}
       {error && (
-        <div className="flex-col flex-center" style={{ padding: '40px 0', color: 'var(--danger)' }}>
+        <div className="menu-error-state">
           <p>{error}</p>
-          <button className="btn-primary mt-4" onClick={() => window.location.reload()} style={{ width: 'auto' }}>
+          <button className="menu-retry-btn" onClick={() => window.location.reload()}>
             Retry
           </button>
         </div>
@@ -127,19 +128,19 @@ export const MenuPage = () => {
       {!isLoading && !error && (
         <div className="menu-grid">
           {filteredMenu.map((item) => (
-            <div key={item.id} className="menu-item-card card">
+            <div key={item.id} className="menu-item-card">
               <div className="menu-item-content">
-                <h3 className="text-body" style={{ fontWeight: 600 }}>{item.name}</h3>
-                <p className="text-caption mb-2 mt-1" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                <h3 className="menu-item-name">{item.name}</h3>
+                <p className="menu-item-description">
                   {item.description}
                 </p>
-                <span className="text-accent" style={{ fontWeight: 700 }}>${item.price.toFixed(2)}</span>
+                <span className="menu-item-price">${item.price.toFixed(2)}</span>
               </div>
               
-              <div className="menu-item-action flex-col flex-center">
+              <div className="menu-item-action-wrapper">
                 <img src={item.image} alt={item.name} className="menu-item-image" />
                 <button 
-                  className="add-to-cart-btn"
+                  className="menu-add-to-cart-btn"
                   onClick={() => addToCart(item)}
                 >
                   <Plus size={16} />
@@ -152,10 +153,10 @@ export const MenuPage = () => {
 
       {/* Floating View Cart Button */}
       {cartItemCount > 0 && (
-        <div className="floating-cart-wrapper">
-          <div className="mobile-wrapper">
-            <button className="btn-primary flex-between" onClick={() => navigate('/cart')}>
-              <div className="flex-center gap-2">
+        <div className="menu-floating-cart-wrapper">
+          <div className="menu-floating-cart-inner">
+            <button className="menu-view-cart-btn" onClick={() => navigate('/cart')}>
+              <div className="menu-cart-info">
                 <ShoppingBag size={20} />
                 <span>View Cart ({cartItemCount})</span>
               </div>

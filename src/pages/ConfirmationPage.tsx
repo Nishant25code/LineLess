@@ -13,41 +13,41 @@ export const ConfirmationPage = () => {
   }, []);
 
   return (
-    <div className="container flex-col flex-center">
-      <div className="mobile-wrapper flex-col flex-center" style={{ flex: 1, padding: '40px 0' }}>
+    <div className="confirmation-container">
+      <div className="confirmation-wrapper">
         
-        <div className="success-circle mb-8">
-          <Check size={48} className="text-primary" style={{ color: 'white' }} />
+        <div className="confirmation-success-icon-wrapper">
+          <Check size={48} className="confirmation-success-icon" />
         </div>
 
-        <h1 className="text-h1 mb-2 text-center">Order Confirmed!</h1>
-        <p className="text-body text-center mb-8">We've received your order and it's being prepared.</p>
+        <h1 className="confirmation-title">Order Confirmed!</h1>
+        <p className="confirmation-subtitle">We've received your order and it's being prepared.</p>
 
-        <div className="card w-full mb-8" style={{ padding: '24px' }}>
-          <div className="flex-col flex-center mb-6" style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '24px' }}>
-            <span className="text-secondary mb-1">Order Number</span>
-            <span className="text-h1 text-accent" style={{ fontSize: '3rem' }}>#{orderNumber}</span>
+        <div className="confirmation-order-card">
+          <div className="confirmation-order-header">
+            <span className="confirmation-order-label">Order Number</span>
+            <span className="confirmation-order-value">#{orderNumber}</span>
           </div>
 
-          <div className="flex-col gap-4">
-            <div className="flex-between">
-              <div className="flex-center gap-2 text-secondary">
+          <div className="confirmation-order-details">
+            <div className="confirmation-detail-row">
+              <div className="confirmation-detail-label">
                 <Clock size={18} />
                 <span>Prep Time</span>
               </div>
-              <span style={{ fontWeight: 600 }}>10-15 mins</span>
+              <span className="confirmation-detail-value">10-15 mins</span>
             </div>
-            <div className="flex-between">
-              <div className="flex-center gap-2 text-secondary">
+            <div className="confirmation-detail-row">
+              <div className="confirmation-detail-label">
                 <MapPin size={18} />
                 <span>Pickup At</span>
               </div>
-              <span style={{ fontWeight: 600 }}>Counter 4</span>
+              <span className="confirmation-detail-value">Counter 4</span>
             </div>
           </div>
         </div>
 
-        <button className="btn-primary mt-auto" onClick={() => navigate('/')}>
+        <button className="confirmation-home-btn" onClick={() => navigate('/')}>
           Back to Home
         </button>
 
