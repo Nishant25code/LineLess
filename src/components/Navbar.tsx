@@ -1,6 +1,7 @@
-import { ShoppingBag, Store } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../CartContext';
+import logoUrl from '../assets/logo.webp';
 import './Navbar.css';
 
 export const Navbar = () => {
@@ -19,7 +20,7 @@ export const Navbar = () => {
         
         {/* Brand Logo */}
         <div className="navbar-brand" onClick={() => navigate('/')}>
-          <Store className="text-accent" size={24} />
+          <img src={logoUrl} alt="LineLess Logo" style={{ width: 32, height: 32, objectFit: 'contain' }} />
           <span className="navbar-title">LineLess</span>
         </div>
 

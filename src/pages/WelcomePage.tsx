@@ -1,5 +1,6 @@
 import { ScanLine, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import logoUrl from '../assets/logo.webp';
 
 export const WelcomePage = () => {
   const navigate = useNavigate();
@@ -8,7 +9,8 @@ export const WelcomePage = () => {
     <div className="container flex-col flex-center">
       <div className="mobile-wrapper flex-col flex-center" style={{ flex: 1, justifyContent: 'center' }}>
         
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 flex-col flex-center">
+          <img src={logoUrl} alt="LineLess Logo" style={{ width: 80, height: 80, objectFit: 'contain', marginBottom: 16 }} />
           <h1 className="text-h1 mb-2 text-accent">LineLess</h1>
           <p className="text-body">Skip the line. Order and pay directly from your phone.</p>
         </div>
