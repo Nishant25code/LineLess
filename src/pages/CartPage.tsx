@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Trash2, Minus, Plus, CreditCard, Apple, Smartphone } from 'lucide-react';
+import { Trash2, Minus, Plus, CreditCard, Apple, Smartphone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../CartContext';
 import './CartPage.css';
@@ -22,9 +22,7 @@ export const CartPage = () => {
     return (
       <div className="container flex-col flex-center">
         <div className="mobile-wrapper" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-          <button className="back-btn self-start mb-8 card" onClick={() => navigate('/menu')}>
-            <ArrowLeft size={20} />
-          </button>
+
           <div className="text-center mt-8">
             <div className="empty-cart-icon mb-6">🛒</div>
             <h2 className="text-h2 mb-2">Your cart is empty</h2>
@@ -40,11 +38,8 @@ export const CartPage = () => {
     <div className="container">
       <div className="mobile-wrapper" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         
-        <div className="flex-between mb-6">
-          <button className="back-btn card" onClick={() => navigate('/menu')}>
-            <ArrowLeft size={20} />
-          </button>
-          <h2 className="text-h2 text-center flex-1" style={{ marginRight: '40px' }}>Checkout</h2>
+        <div className="mb-6">
+          <h2 className="text-h2">Checkout</h2>
         </div>
 
         <div className="cart-items-list mb-6">
