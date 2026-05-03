@@ -1,17 +1,16 @@
 .back-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-primary);
   width: 40px;
   height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .back-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-tertiary);
 }
 
 .empty-cart-icon {
@@ -27,8 +26,8 @@
 }
 
 .cart-item-image {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   border-radius: var(--radius-sm);
   object-fit: cover;
 }
@@ -41,31 +40,32 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 4px;
+  background: var(--bg-tertiary);
+  padding: 6px;
   border-radius: 20px;
   width: fit-content;
 }
 
 .qty-btn {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   color: var(--text-primary);
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .qty-btn:hover {
-  background: var(--bg-tertiary);
+  background: var(--bg-secondary);
 }
 
 .qty-value {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  min-width: 12px;
+  min-width: 16px;
   text-align: center;
 }
 
@@ -76,15 +76,17 @@
 
 .payment-option {
   flex: 1;
-  background: var(--bg-glass);
-  border: var(--border-glass);
   padding: 16px;
   border-radius: var(--radius-md);
   color: var(--text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  background: var(--bg-primary);
+}
+
+.payment-option:hover {
+  background: var(--bg-tertiary);
 }
 
 .payment-option.active {
@@ -100,10 +102,10 @@
 .summary-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .total-row {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--border-color);
   padding-top: 16px;
 }

@@ -1,26 +1,26 @@
-.cart-icon-wrapper {
+.cart-btn {
   position: relative;
-  background: rgba(255, 255, 255, 0.05);
   padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
 }
 
-.cart-icon-wrapper:hover {
-  background: rgba(255, 255, 255, 0.1);
+.cart-btn:hover {
+  background: var(--bg-tertiary);
 }
 
 .cart-badge {
   position: absolute;
-  top: -2px;
-  right: -2px;
+  top: -6px;
+  right: -6px;
   background-color: var(--accent);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -31,10 +31,7 @@
 .search-bar {
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
+  padding: 12px 16px;
   gap: 12px;
 }
 
@@ -45,7 +42,7 @@
   outline: none;
   color: var(--text-primary);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .search-bar input::placeholder {
@@ -62,27 +59,53 @@
 
 .category-pill {
   white-space: nowrap;
-  padding: 8px 16px;
+  padding: 8px 20px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  border: 1px solid transparent;
   scroll-snap-align: start;
 }
 
 .category-pill.active {
   background: var(--accent);
   color: white;
+  border-color: var(--accent);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* Responsive grid for tablets and laptops */
+@media (min-width: 640px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
 }
 
 .menu-item-card {
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  margin-bottom: 16px;
   gap: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .menu-item-content {
@@ -94,32 +117,32 @@
 }
 
 .menu-item-image {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   object-fit: cover;
   border-radius: var(--radius-md);
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-tertiary);
 }
 
 .add-to-cart-btn {
   position: absolute;
-  bottom: -10px;
-  background: var(--bg-primary);
+  bottom: -12px;
+  background: #ffffff;
   color: var(--accent);
   border: 1px solid var(--border-color);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .add-to-cart-btn:hover {
   background: var(--accent);
   color: white;
-  transform: scale(1.05);
+  border-color: var(--accent);
 }
 
 .floating-cart-wrapper {
@@ -127,20 +150,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 24px;
-  background: linear-gradient(to top, var(--bg-primary) 50%, transparent);
+  padding: 16px 24px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
   z-index: 20;
-}
-
-.floating-cart-wrapper .btn-primary {
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
-}
-
-@keyframes scale-in {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-.animate-scale-in {
-  animation: scale-in 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
