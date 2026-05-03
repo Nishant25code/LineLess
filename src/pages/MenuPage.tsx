@@ -21,6 +21,18 @@ export const MenuPage = () => {
     const fetchMeals = async () => {
       try {
         setIsLoading(true);
+
+        // Check cache first
+        const cachedMenu = sessionStorage.getItem('cachedMenuItems');
+        if (cachedMenu) {
+          const parsedItems = JSON.parse(cachedMenu);
+          setMenuItems(parsedItems);
+          const uniqueCategories = Array.from(new Set(parsedItems.map((item: MenuItem) => item.category)));
+          setCategories(['All', ...(uniqueCategories as string[])]);
+          setIsLoading(false);
+          return;
+        }
+
         // Using a free, public API without API keys for student-friendly basic code
         const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
         
@@ -50,6 +62,9 @@ export const MenuPage = () => {
           // Extract unique categories dynamically from the fetched items
           const uniqueCategories = Array.from(new Set(mappedItems.map(item => item.category)));
           setCategories(['All', ...uniqueCategories]);
+
+          // Save to cache
+          sessionStorage.setItem('cachedMenuItems', JSON.stringify(mappedItems));
         } else {
           setMenuItems([]);
         }
@@ -139,7 +154,7 @@ export const MenuPage = () => {
           {filteredMenu.map((item) => (
             <article key={item.id} className="menu-item-card">
               <div className="menu-item-image-wrapper">
-                <img src={item.image} alt={item.name} className="menu-item-image" />
+                <img src={item.image} alt={item.name} className="menu-item-image" loading="lazy" />
               </div>
               
               <div className="menu-item-content">
