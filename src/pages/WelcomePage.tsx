@@ -9,7 +9,7 @@ export const WelcomePage = () => {
     <div className="welcome-page-container">
       <div className="welcome-qr-content">
 
-        {/* Header */}
+
         <div className="welcome-qr-header">
           <div className="welcome-qr-icon-badge">
             <ScanLine size={28} />
@@ -20,32 +20,32 @@ export const WelcomePage = () => {
           </p>
         </div>
 
-        {/* QR Code Card */}
+
         <div className="welcome-qr-card">
           <div className="welcome-qr-frame">
-            {/* Corner accents */}
+
             <span className="welcome-qr-corner welcome-qr-corner-tl" />
             <span className="welcome-qr-corner welcome-qr-corner-tr" />
             <span className="welcome-qr-corner welcome-qr-corner-bl" />
             <span className="welcome-qr-corner welcome-qr-corner-br" />
 
-            {/* Static QR code rendered with SVG */}
+
             <svg className="welcome-qr-svg" viewBox="0 0 29 29" shapeRendering="crispEdges">
-              {/* Position detection patterns (top-left, top-right, bottom-left) */}
-              {/* Top-left finder */}
+
+
               <rect x="0" y="0" width="7" height="7" fill="currentColor"/>
               <rect x="1" y="1" width="5" height="5" fill="var(--bg-primary)"/>
               <rect x="2" y="2" width="3" height="3" fill="currentColor"/>
-              {/* Top-right finder */}
+
               <rect x="22" y="0" width="7" height="7" fill="currentColor"/>
               <rect x="23" y="1" width="5" height="5" fill="var(--bg-primary)"/>
               <rect x="24" y="2" width="3" height="3" fill="currentColor"/>
-              {/* Bottom-left finder */}
+
               <rect x="0" y="22" width="7" height="7" fill="currentColor"/>
               <rect x="1" y="23" width="5" height="5" fill="var(--bg-primary)"/>
               <rect x="2" y="24" width="3" height="3" fill="currentColor"/>
 
-              {/* Timing patterns */}
+
               <rect x="8" y="6" width="1" height="1" fill="currentColor"/>
               <rect x="10" y="6" width="1" height="1" fill="currentColor"/>
               <rect x="12" y="6" width="1" height="1" fill="currentColor"/>
@@ -53,13 +53,13 @@ export const WelcomePage = () => {
               <rect x="6" y="10" width="1" height="1" fill="currentColor"/>
               <rect x="6" y="12" width="1" height="1" fill="currentColor"/>
 
-              {/* Alignment pattern */}
+
               <rect x="20" y="20" width="5" height="5" fill="currentColor"/>
               <rect x="21" y="21" width="3" height="3" fill="var(--bg-primary)"/>
               <rect x="22" y="22" width="1" height="1" fill="currentColor"/>
 
-              {/* Data modules — scattered to look like a real QR */}
-              {/* Row 8-12 */}
+
+
               <rect x="8" y="8" width="1" height="1" fill="currentColor"/>
               <rect x="10" y="8" width="1" height="1" fill="currentColor"/>
               <rect x="12" y="8" width="1" height="1" fill="currentColor"/>
@@ -96,7 +96,7 @@ export const WelcomePage = () => {
               <rect x="17" y="12" width="1" height="1" fill="currentColor"/>
               <rect x="19" y="12" width="1" height="1" fill="currentColor"/>
 
-              {/* Row 13-17 */}
+
               <rect x="9" y="13" width="1" height="1" fill="currentColor"/>
               <rect x="10" y="13" width="1" height="1" fill="currentColor"/>
               <rect x="12" y="13" width="1" height="1" fill="currentColor"/>
@@ -127,7 +127,7 @@ export const WelcomePage = () => {
               <rect x="17" y="17" width="1" height="1" fill="currentColor"/>
               <rect x="19" y="17" width="1" height="1" fill="currentColor"/>
 
-              {/* Row 18-21 */}
+
               <rect x="8" y="18" width="1" height="1" fill="currentColor"/>
               <rect x="10" y="18" width="1" height="1" fill="currentColor"/>
               <rect x="14" y="18" width="1" height="1" fill="currentColor"/>
@@ -144,7 +144,7 @@ export const WelcomePage = () => {
               <rect x="16" y="20" width="1" height="1" fill="currentColor"/>
               <rect x="18" y="20" width="1" height="1" fill="currentColor"/>
 
-              {/* Right side data */}
+
               <rect x="22" y="8" width="1" height="1" fill="currentColor"/>
               <rect x="24" y="8" width="1" height="1" fill="currentColor"/>
               <rect x="26" y="8" width="1" height="1" fill="currentColor"/>
@@ -165,7 +165,7 @@ export const WelcomePage = () => {
               <rect x="22" y="12" width="1" height="1" fill="currentColor"/>
               <rect x="26" y="12" width="1" height="1" fill="currentColor"/>
 
-              {/* Bottom data */}
+
               <rect x="8" y="22" width="1" height="1" fill="currentColor"/>
               <rect x="10" y="22" width="1" height="1" fill="currentColor"/>
               <rect x="13" y="22" width="1" height="1" fill="currentColor"/>
@@ -192,7 +192,7 @@ export const WelcomePage = () => {
               <rect x="14" y="26" width="1" height="1" fill="currentColor"/>
               <rect x="17" y="26" width="1" height="1" fill="currentColor"/>
 
-              {/* Bottom-right data */}
+
               <rect x="26" y="22" width="1" height="1" fill="currentColor"/>
               <rect x="28" y="22" width="1" height="1" fill="currentColor"/>
               <rect x="25" y="23" width="1" height="1" fill="currentColor"/>
@@ -211,7 +211,7 @@ export const WelcomePage = () => {
           <p className="welcome-qr-table-label">Table #12 — Food Court</p>
         </div>
 
-        {/* CTA */}
+
         <button className="welcome-qr-cta" onClick={() => navigate('/menu')}>
           Browse Menu
         </button>

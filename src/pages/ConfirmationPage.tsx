@@ -8,7 +8,7 @@ export const ConfirmationPage = () => {
   const [orderNumber, setOrderNumber] = useState('');
 
   useEffect(() => {
-    // Generate random 4 digit order number
+
     setOrderNumber(Math.floor(1000 + Math.random() * 9000).toString());
   }, []);
 

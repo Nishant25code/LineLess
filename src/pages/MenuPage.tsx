@@ -22,7 +22,7 @@ export const MenuPage = () => {
       try {
         setIsLoading(true);
 
-        // Check cache first
+
         const cachedMenu = sessionStorage.getItem('cachedMenuItems');
         if (cachedMenu) {
           const parsedItems = JSON.parse(cachedMenu);
@@ -33,7 +33,7 @@ export const MenuPage = () => {
           return;
         }
 
-        // Using a free, public API without API keys for student-friendly basic code
+
         const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=');
         
         if (!response.ok) {
@@ -43,15 +43,15 @@ export const MenuPage = () => {
         const data = await response.json();
         
         if (data.meals) {
-          // Map external API data to our clean MenuItem format
+
           const mappedItems: MenuItem[] = data.meals.map((meal: any) => ({
             id: meal.idMeal,
             name: meal.strMeal,
-            // Use the first part of instructions as description if available
+
             description: meal.strInstructions 
               ? meal.strInstructions.substring(0, 60) + '...' 
               : meal.strMeal,
-            // Free APIs don't have prices, so generate a stable realistic price based on ID
+
             price: (parseInt(meal.idMeal) % 12) + 6.99,
             image: meal.strMealThumb,
             category: meal.strCategory,
@@ -59,11 +59,11 @@ export const MenuPage = () => {
 
           setMenuItems(mappedItems);
 
-          // Extract unique categories dynamically from the fetched items
+
           const uniqueCategories = Array.from(new Set(mappedItems.map(item => item.category)));
           setCategories(['All', ...uniqueCategories]);
 
-          // Save to cache
+
           sessionStorage.setItem('cachedMenuItems', JSON.stringify(mappedItems));
         } else {
           setMenuItems([]);
@@ -90,10 +90,9 @@ export const MenuPage = () => {
       
       <div className="menu-header">
         <h2 className="menu-title" style={{ fontFamily: "'Playfair Display', serif", fontSize: '2.5rem' }}>Our Regular Food</h2>
-        <p className="menu-subtitle">Real-time Food API</p>
       </div>
 
-      {/* Search & Filters */}
+
       <div className="menu-search-bar">
         <Search size={20} className="menu-search-icon" />
         <input 
@@ -106,7 +105,7 @@ export const MenuPage = () => {
         <Filter size={20} className="menu-filter-icon" />
       </div>
 
-      {/* Categories */}
+
       {!isLoading && !error && (
         <div className="menu-categories-scroll">
           {categories.map(category => (
@@ -121,15 +120,15 @@ export const MenuPage = () => {
         </div>
       )}
 
-      {/* Loading State */}
+
       {isLoading && (
         <div className="menu-loading-state">
           <Loader2 size={32} className="menu-loading-spinner" />
-          <p>Fetching real-time menu...</p>
+          <p>Fetching menu...</p>
         </div>
       )}
 
-      {/* Error State */}
+
       {error && (
         <div className="menu-error-state">
           <p>{error}</p>
@@ -139,7 +138,7 @@ export const MenuPage = () => {
         </div>
       )}
 
-      {/* Active Category Title */}
+
       {!isLoading && !error && (
         <div className="menu-section-header" style={{ marginBottom: '32px' }}>
           <h2 className="menu-title" style={{ fontFamily: "'Noto Serif', serif", fontSize: '28px', color: 'var(--text-primary)' }}>
@@ -148,7 +147,7 @@ export const MenuPage = () => {
         </div>
       )}
 
-      {/* Menu Grid */}
+
       {!isLoading && !error && (
         <div className="menu-grid">
           {filteredMenu.map((item) => (
@@ -169,8 +168,7 @@ export const MenuPage = () => {
               
               <div className="menu-item-footer">
                 <div className="menu-item-tags">
-                  {/* Dynamic tags could go here. Placeholder for aesthetic. */}
-                  {item.price > 10 && <span className="menu-item-tag">Chef's Pick</span>}
+
                 </div>
                 <button 
                   className="menu-add-to-cart-btn"
@@ -184,7 +182,7 @@ export const MenuPage = () => {
         </div>
       )}
 
-      {/* Floating View Cart Button */}
+
       {cartItemCount > 0 && (
         <div className="menu-floating-cart-wrapper">
           <div className="menu-floating-cart-inner">

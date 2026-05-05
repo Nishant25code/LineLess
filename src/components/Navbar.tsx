@@ -9,18 +9,18 @@ export const Navbar = () => {
   const location = useLocation();
   const { cartItemCount } = useCart();
 
-  // Navbar is now visible on all pages including the home page
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
         
-        {/* Brand Logo */}
+
         <div className="navbar-brand" onClick={() => navigate('/')}>
           <img src={logoUrl} alt="LineLess Logo" style={{ width: 32, height: 32, objectFit: 'contain' }} />
           <span className="navbar-title">LineLess</span>
         </div>
 
-        {/* Navigation Links */}
+
         <div className="navbar-links">
           <button 
             className={`nav-link ${location.pathname === '/menu' ? 'active' : ''}`}
@@ -30,7 +30,7 @@ export const Navbar = () => {
           </button>
         </div>
 
-        {/* Cart Icon */}
+
         <div className="navbar-cart">
           <button className="cart-icon-btn" onClick={() => navigate('/cart')}>
             <ShoppingBag size={24} />
