@@ -8,27 +8,22 @@ export const ConfirmationPage = () => {
   const [orderNumber, setOrderNumber] = useState('');
 
   useEffect(() => {
-
     setOrderNumber(Math.floor(1000 + Math.random() * 9000).toString());
   }, []);
 
   return (
     <div className="confirmation-container">
       <div className="confirmation-wrapper">
-        
         <div className="confirmation-success-icon-wrapper">
           <Check size={48} className="confirmation-success-icon" />
         </div>
-
         <h1 className="confirmation-title">Order Confirmed!</h1>
         <p className="confirmation-subtitle">We've received your order and it's being prepared.</p>
-
         <div className="confirmation-order-card">
           <div className="confirmation-order-header">
             <span className="confirmation-order-label">Order Number</span>
             <span className="confirmation-order-value">#{orderNumber}</span>
           </div>
-
           <div className="confirmation-order-details">
             <div className="confirmation-detail-row">
               <div className="confirmation-detail-label">
@@ -46,11 +41,9 @@ export const ConfirmationPage = () => {
             </div>
           </div>
         </div>
-
         <button className="confirmation-home-btn" onClick={() => navigate('/')}>
           Back to Home
         </button>
-
       </div>
     </div>
   );

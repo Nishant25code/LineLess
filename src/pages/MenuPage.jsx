@@ -2,17 +2,16 @@ import { useState, useEffect } from 'react';
 import { ShoppingBag, Plus, Search, Filter, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../CartContext';
-import type { MenuItem } from '../types';
 import './MenuPage.css';
 
 export const MenuPage = () => {
   const navigate = useNavigate();
   const { addToCart, cartItemCount } = useCart();
   
-  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
-  const [categories, setCategories] = useState<string[]>(['All']);
+  const [menuItems, setMenuItems] = useState([]);
+  const [categories, setCategories] = useState(['All']);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,8 +26,8 @@ export const MenuPage = () => {
         if (cachedMenu) {
           const parsedItems = JSON.parse(cachedMenu);
           setMenuItems(parsedItems);
-          const uniqueCategories = Array.from(new Set(parsedItems.map((item: MenuItem) => item.category)));
-          setCategories(['All', ...(uniqueCategories as string[])]);
+          const uniqueCategories = Array.from(new Set(parsedItems.map((item) => item.category)));
+          setCategories(['All', ...uniqueCategories]);
           setIsLoading(false);
           return;
         }
@@ -44,7 +43,7 @@ export const MenuPage = () => {
         
         if (data.meals) {
 
-          const mappedItems: MenuItem[] = data.meals.map((meal: any) => ({
+          const mappedItems = data.meals.map((meal) => ({
             id: meal.idMeal,
             name: meal.strMeal,
 

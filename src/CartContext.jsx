@@ -1,22 +1,11 @@
 import { createContext, useContext, useState } from 'react';
-import type { ReactNode } from 'react';
-import type { MenuItem, CartItem } from './types';
 
-interface CartContextType {
-  cart: CartItem[];
-  addToCart: (item: MenuItem) => void;
-  updateQuantity: (id: string, delta: number) => void;
-  clearCart: () => void;
-  cartItemCount: number;
-  cartTotal: number;
-}
+const CartContext = createContext(undefined);
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
-export function CartProvider({ children }: { children: ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  const addToCart = (item: MenuItem) => {
+  const addToCart = (item) => {
     setCart((prevCart) => {
       const existing = prevCart.find((cartItem) => cartItem.id === item.id);
       if (existing) {
@@ -30,7 +19,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const updateQuantity = (id: string, delta: number) => {
+  const updateQuantity = (id, delta) => {
     setCart((prevCart) => {
       return prevCart
         .map((item) => {
